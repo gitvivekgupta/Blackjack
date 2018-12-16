@@ -2,31 +2,64 @@
 <html>
 
 <head>
-    <title>Game_page</title>
+
+    <title>On the table</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="author" lang="English" content="Vivek Gupta, Ankit Sinha, Gaurav Thakkar">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
-<body style="background-image: url(https://www.clowerweb.com/cors/blackjack/table.png); background-repeat: no-repeat; background-size: cover; background-position: center; height: 100%;">
+<body>
 
-<div>
-
-  <div>
-
-    <div id="dealer" style="margin-left: 400px;"></div><br><br><br>
-    <div id="player" style="margin-left: 400px;"></div><br><br><br>
-
-  </div>
+  <img src="../images/table2.jpg" class="bg-table">
   
-  <div style="margin-left: 600px;">
-
-    <span><button onclick="add()">500</button></span>
-    <span><button onclick="quit()">quit</button></span>
-    <span><button onclick="hit()" >Hit</button></span>
-    <span><button onclick="stand()">Stand</button></span>
-    <span><button onclick="new_game()">New Game</button></span>
+    <div class="play-feild">
   
-  </div>
+      <div id="dealer"></div><br>=
+      <div id="player"></div><br><br>
+  
+      <button type="button" class="set-table-play" data-toggle="modal" data-target="#myModal">ADD AMOUNT</button>
 
-</div>
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content"> 
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Select Number of Players</h4>
+            </div>  
+            <div class="modal-body">
+              <p> 
+                 Add Principle Amount: <input type="number" id="input-principle-amount" min="1000">
+                 <input type="button" value="Submit" onclick="add_amount()"><br><br>
+
+                 <p id="show-error">
+                   
+                 </p>
+
+              </p>
+            </div>  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <!-- <a class="table-btn" onclick="add()">ADD</a> -->
+      <a class="table-btn" onclick="quit()">QUIT</a>
+      <a class="table-btn" onclick="hit()">HIT</a>
+      <a class="table-btn" onclick="stand()">STAND</a>
+      <a class="table-btn" onclick="new_game()">NEW GAME</a>
+    
+    </div>
 
 
 <script type="text/javascript" src="../scripts/finalgame.js"></script>

@@ -1,4 +1,4 @@
-var request = new XMLHttpRequest();
+var request_data = new XMLHttpRequest();
 var allCards = []; 
 var player = [];
 var dealer = [];
@@ -16,20 +16,18 @@ var total_money=0;
 var dealear_won;
 var player_won;
 var tie;
+var min_principle_amount; 
+var principle_amount;
 
 
-request.open("GET", "https://deckofcardsapi.com/api/deck/new/draw/?count=52", true);
+request_data.open("GET", "https://deckofcardsapi.com/api/deck/new/draw/?count=52", true);
 
-function add() {
 
-    bid_money+=500;
-}
-
-request.onreadystatechange = function() {
+request_data.onreadystatechange = function() {
 
     if (this.readyState == 4 && this.status == 200) {
 
-        card_deck = JSON.parse(request.responseText);
+        card_deck = JSON.parse(request_data.responseText);
         firstdeal = card_deck.cards;
 
         for (var i = 0; i < firstdeal.length; i++) {
@@ -77,6 +75,33 @@ request.onreadystatechange = function() {
 
     
 };
+
+function add_amount() {
+
+    let entered_principle_amount = document.getElementById("input-principle-amount").value;
+    min_principle_amount = document.getElementById("input-principle-amount").min;
+
+    if(parseInt(entered_principle_amount) < parseInt(min_principle_amount)) {
+
+        let error = document.createTextNode("Invalid Amount! Please Enter Amount greater than 1000.");
+        document.getElementById("show-error").innerHTML = ' ';
+        document.getElementById("show-error").appendChild(error);
+    }
+
+    else {
+        console.log("test");
+        principle_amount = entered_principle_amount;
+        console.log(principle_amount);
+        let display_principle_sum = document.getElementsByClassName("play-feild");
+        console.log(display_principle_sum);
+        let display_principle_button = document.createElement("BUTTON");
+        console.log(display_principle_button);
+        let display_principle_button_value = document.createTextNode(`Sum: ${principle_amount}`);
+        console.log(display_principle_button_value);
+        document.display_principle_sum.appendChild(display_principle_button);
+        display_principle_sum.appendChild(display_principle_button_value);
+    }
+}
 
 function Dealerhit() {
 
@@ -173,4 +198,4 @@ function stand() {
     }
 }
 
-request.send();
+request_data.send();
