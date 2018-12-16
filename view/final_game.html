@@ -2,37 +2,35 @@
 <html>
 
 <head>
-	<title>Game_page</title>
+    <title>Game_page</title>
 </head>
 
-<body>
+<body style="background-image: url(https://www.clowerweb.com/cors/blackjack/table.png); background-repeat: no-repeat; background-size: cover; background-position: center; height: 100%;">
 
-	<p>
+<div>
 
-    <div id="dealer">
+  <div>
 
-		  <span><img id="dealer1">
-		  <img id="dealer2"></span>
+    <div id="dealer" style="margin-left: 400px;"></div><br><br><br>
+    <div id="player" style="margin-left: 400px;"></div><br><br><br>
 
-	 </div>
+  </div>
+  
+  <div style="margin-left: 600px;">
 
-  </p>
+    <span><button onclick="add()">500</button></span>
+    <span><button onclick="quit()">quit</button></span>
+    <span><button onclick="hit()" >Hit</button></span>
+    <span><button onclick="stand()">Stand</button></span>
+    <span><button onclick="new_game()">New Game</button></span>
+  
+  </div>
 
-  <p>
-
-    <div id="player">
-
-      <span></span><img id="player1">
-      <img id="player2"></span>
-
-   </div>
-   
-  </p>
-
-	<button onclick="hit()"></button>
+</div>
 
 
 <script type="text/javascript" src="../scripts/finalgame.js"></script>
+<script type="text/javascript" src="../scripts/refresh.js"></script>
 
 </body>
 

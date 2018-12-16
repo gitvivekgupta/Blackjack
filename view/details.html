@@ -3,72 +3,71 @@
 <html>
 
 <head>
-<title>Enter Details</title>
 
-<meta name="Description" content="There is no money to win, if you are looking for a quick game that will make you rich you are not at the right place. In here, you'll only find the pleasure to be smart ;).">
+	<title>Enter Players</title>
+	
+	<meta name="author" lang="En" content="Vivek Gupta, Ankit Sinha, Gaurav Thakkar">
 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" lang="En" content="Vivek Gupta, Ankit Sinha, Gaurav Thakkar">
+	<meta charset="utf-8">
+	
+	<link rel="stylesheet" href="style.css">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<meta name="reply-to" content="xyz@codeasylum.com">
-
-<meta name="category" content="Blackjack Game">
-
-<meta name="abstract" content="Let's play Blackjack">
-
-<link rel="stylesheet" href="style.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
 <body>
 
-<div class="container">
+	<img src="../images/ruleback.jpg" class="bg-image">
 
-	<div class="bg-image">
-		<img src="../images/ruleback.jpg" alt="Snow">
-	</div>
-
-
-	<!-- The Modal -->
-	<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  		<div class="modal-content">
-
-    		<p>
-
-    			<div class="bg-text" id="inputdetail" style="padding-top: 20px;">	
+	<div class="container">
 	
+	  <!-- Trigger the modal with a button -->
+	  <button type="button" class="set_play" data-toggle="modal" data-target="#myModal">Select players</button>
+	
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">	
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Select Number of Players</h4>
+	        </div>	
+	        <div class="modal-body">
+	          <p>	
+	          	<div class="bg-text" id="inputdetail" style="padding-top: 20px;">	
 					<span>Select number of Players : </span>
 						<select id="box" name="Players" onchange="total_players();">
   							<option value="1">1</option>
   							<option value="2">2</option>
   							<option value="3">3</option>
   							<option value="4">4</option>
-						</select><br><br>
-				
-				<div id="displayui">
-
-				</div>
-
-				</div>
-
-				<input type="submit" value="Submit" />
-
-    		</p>
-
-  		</div>
-
-  	</div>
-
-	
-
-</div>	
-
-
-
+						</select><br><br>	
+					<div id="displayui"></div>	
+				</div><br>	
+				<input type="submit" value="Submit" onclick="submit_player_details()" />	
+	          </p>
+	        </div>	
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+	  
+	</div>	
 
  <script src="../scripts/ui.js"></script> 
+
 </body>
 
 </html>
