@@ -41,32 +41,40 @@
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
 	          <h4 class="modal-title">Select Number of Players</h4>
 	        </div>	
+
 	        <div class="modal-body">
+
 	          <p>	
 	          	<div id="inputdetail" style="padding-top: 20px;">	
 					<span>Select number of Players : </span>
-						<select id="box" name="Players" onchange="total_players();">
+						<select id="player-box" name="Players" onchange="total_players();">
   							<option value="1">1</option>
   							<option value="2">2</option>
   							<option value="3">3</option>
   							<option value="4">4</option>
 						</select><br><br>	
-					<div id="displayui"></div>	
+					<div id="display-players">
+						
+					</div>	
 				</div><br>	
-				<input type="submit" value="Submit" onclick="submit_player_details()" />	
+
+				<input type="submit" value="Submit" onclick="submit_player_details()" />
+
 	          </p>
-	        </div>	
+	        </div>
+
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        </div>
-	      </div>
+
+	     </div>
 	      
 	    </div>
 	  </div>
-	  
 	</div>	
 
- <script src="../scripts/ui.js"></script> 
+ <script src="../scripts/player_detail.js"></script> 
+ <!-- <script src="../scripts/jack_table.js"></script>  -->
 
 </body>
 

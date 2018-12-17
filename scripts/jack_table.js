@@ -1,4 +1,4 @@
-var request = new XMLHttpRequest();
+var request_data = new XMLHttpRequest();
 var allCards = []; 
 var player = [];
 var dealer = [];
@@ -16,20 +16,18 @@ var total_money=0;
 var dealear_won;
 var player_won;
 var tie;
+var min_principle_amount; 
+var principle_amount;
 
 
-request.open("GET", "https://deckofcardsapi.com/api/deck/new/draw/?count=52", true);
+request_data.open("GET", "https://deckofcardsapi.com/api/deck/new/draw/?count=52", true);
 
-function add() {
 
-    bid_money+=500;
-}
-
-request.onreadystatechange = function() {
+request_data.onreadystatechange = function() {
 
     if (this.readyState == 4 && this.status == 200) {
 
-        card_deck = JSON.parse(request.responseText);
+        card_deck = JSON.parse(request_data.responseText);
         firstdeal = card_deck.cards;
 
         for (var i = 0; i < firstdeal.length; i++) {
@@ -78,24 +76,47 @@ request.onreadystatechange = function() {
     
 };
 
-function Dealerhit() {
+function add_amount() {
 
-    random_card = allCards[Math.floor(Math.random()*allCards.length)];
-    index_of_random = allCards.indexOf(random_card);
-    allCards.splice(index_of_random,1);
-    dealer.push(random_card);
-    var str = random_card.image;
-    dealerSum+=random_card.value;
+    let entered_principle_amount = document.getElementById("input-principle-amount").value;
+    min_principle_amount = document.getElementById("input-principle-amount").min;
 
-    if(dealerSum > 21) {
+    if(parseInt(entered_principle_amount) < parseInt(min_principle_amount)) {
 
-        if(dealer['ACE'] == true) {
-
-            dealerSum = dealerSum-10;
-        }
+        let principle_amount_error_message = document.createTextNode("Invalid Amount! Please Enter Amount greater than 1000.");
+        document.getElementById("show-error").innerHTML = ' ';
+        document.getElementById("show-error").appendChild(principle_amount_error_message);
     }
 
-    document.getElementById("dealer").innerHTML+= "<img src="+(random_card.image) + ">";
+    else {
+        
+        principle_amount = entered_principle_amount;
+        let display_principle_button = document.createElement("BUTTON");
+        display_principle_button.id = 'principle-sum-button-id';
+        document.getElementById("table-data").appendChild(display_principle_button);
+        let display_principle_button_value = document.createTextNode(`Sum: ${principle_amount}`);
+        document.getElementById("principle-sum-button-id").innerHTML = `${display_principle_button_value}`;
+    }
+}
+
+function Dealerhit() {
+
+	random_card = allCards[Math.floor(Math.random()*allCards.length)];
+	index_of_random = allCards.indexOf(random_card);
+	allCards.splice(index_of_random,1);
+	dealer.push(random_card);
+	var str = random_card.image;
+	dealerSum+=random_card.value;
+
+	if(dealerSum > 21) {
+
+		if(dealer['ACE'] == true) {
+
+			dealerSum = dealerSum-10;
+		}
+	}
+
+	document.getElementById("dealer").innerHTML+= "<img src="+(random_card.image) + ">";
 
               // document.getElementById("pl").innerHTML += "<img src=$(str)>";
 }
@@ -120,15 +141,15 @@ function hit() {
 
         else {
 
-            stand(); 
-        }
-    }
+        	stand(); 
+    	}
+    }			
     // document.getElementById("player").innerHTML = "<img src='$(str)'>";
 }
 
 function stand() {
 
-    if(playerSum>21) {
+	if(playerSum>21) {
 
         dealear_won = 1;
         total_money-=bid_money;
@@ -139,38 +160,38 @@ function stand() {
         
     else {
 
-        while(dealerSum<17){
-            Dealerhit();
-        }
+    	while(dealerSum<17){
+    		Dealerhit();
+    	}
 
-        if(dealerSum>21) {
+    	if(dealerSum>21) {
 
-            player_won =1;
-            break;
-        }
+    		player_won =1;
+    		break;
+    	}
 
-        if(dealerSum == playerSum) {
+    	if(dealerSum == playerSum) {
 
-            tie = 1;
-            break;
-        }
+    		tie = 1;
+    		break;
+    	}
        
         if(playerSum<dealerSum) {
 
-            dealear_won = 1;
-            total_money-=bid_money;
-            bid_money=0;
+        	dealear_won = 1;
+         	total_money-=bid_money;
+         	bid_money=0;
         }
 
         else {
 
-            total_money+=bid_money;
-            bid_money=0;
+        	total_money+=bid_money;
+         	bid_money=0;
          // goto label;
          // document.getElementById("dealerwin").disabled=false;
-            player_won = 1;
-        }
+        	player_won = 1;
+    	}
     }
 }
 
-request.send();
+request_data.send();
