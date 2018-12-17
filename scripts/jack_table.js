@@ -70,11 +70,10 @@ request_data.onreadystatechange = function() {
             player.push(initial_cards);
             document.getElementById("player-card-id").innerHTML+= "<img src="+(initial_cards.image)+">" ;
         }
-
     }
-
-    
 };
+
+
 
 document.getElementById("btn-disable-1").disabled = true;
 document.getElementById("btn-disable-2").disabled = true;
@@ -192,7 +191,7 @@ function stand() {
                     if(confirmation_more_play == true) {
     
                         localStorage.setItem("Principle Amount of User", principle_amount);
-                        window.location = '../view/play_more.html';
+                        // window.location = '../view/play_more.html';
                     }
     
                     else {
@@ -210,7 +209,7 @@ function stand() {
                     if(confirmation_more_play == true) {
     
                         localStorage.setItem("Principle Amount of User", principle_amount);
-                        window.location = '../view/play_more.html';
+                        // window.location = '../view/play_more.html';
                     }
     
                     else {
@@ -228,7 +227,7 @@ function stand() {
                     if(confirmation_more_play == true) {
     
                         localStorage.setItem("Principle Amount of User", principle_amount);
-                        window.location = '../view/play_more.html';
+                        // window.location = '../view/play_more.html';
                     }
     
                     else {
@@ -249,7 +248,7 @@ function stand() {
                     if(confirmation_more_play == true) {
     
                         localStorage.setItem("Principle Amount of User", principle_amount);
-                        window.location = '../view/play_more.html';
+                        // window.location = '../view/play_more.html';
                     }
     
                     else {
