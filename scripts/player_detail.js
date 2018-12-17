@@ -10,6 +10,7 @@ var players_username = [];
 var total_number_of_players;
 var incoming_player;
 var store_player_username;
+var current_players = [];
 
 function total_players(value) {
 
@@ -36,10 +37,8 @@ function submit_player_details() {
 
 	for(k=1; k<=selected_value; k++) {
 
-		player = document.getElementById('player_details_div' + i);
-		console.log(player);
-		incoming_player = document.getElementById('username' + i).value;
-		console.log(incoming_player);
+		player = document.getElementById('player_details_div' + k);
+		incoming_player = document.getElementById('username' + k).value;
 
 		for(j in players_username) {
 
@@ -51,21 +50,26 @@ function submit_player_details() {
 				created_user_error_para.id = 'user-error-para-id';
 				created_user_error_para.appendChild(user_exist_error_message);
 			}
-
-			else {
-
-				// open UI
-			}
-
+		break;
 		}
+		current_players.push(incoming_player);
 	}
 
-	console.log(players_username);
-	
 	let players_div = document.getElementById("display-players");
-
 	NodeList.prototype.forEach = Array.prototype.forEach
 	let players_data = players_div.childNodes;
 	total_number_of_players = players_data.length;
+
+	if(total_number_of_players == 1) {
+
+		window.location = "../view/play_table.html";
+	}
+
+	else{
+
+		// UI for multiple people
+	}
+
+	
 }
 

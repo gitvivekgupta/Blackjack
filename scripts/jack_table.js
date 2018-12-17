@@ -2,15 +2,15 @@ var request_data = new XMLHttpRequest();
 var allCards = []; 
 var player = [];
 var dealer = [];
-var playerSum=0 ;
-var dealerSum=0 ;
+var playerSum=0;
+var dealerSum=0;
 var player_totalwin = 0;
 var dealer_totalwin = 0;
 var firstdeal;
 var card_deck; 
 var initial_cards, player_initial=0, dealer_initial=0;
-var random_card;
-var index_of_random;
+var random_card_selection;
+var index_of_random_selection;
 var bid_money = 0;
 var total_money=0;
 var dealear_won;
@@ -59,7 +59,10 @@ request_data.onreadystatechange = function() {
             dealerSum+=initial_cards.value;
             dealer.push(initial_cards);
 
-            document.getElementById("dealer").innerHTML+= "<img src="+(initial_cards.image)+">";
+            // var dealer_cards = document.createElement("IMG");
+            // dealer_cards.src = 'initial_cards.image';
+            // document.getElementById("dealer-card-id").appendChild(dealer_cards);
+            document.getElementById("dealer-card-id").innerHTML+= "<img src="+(initial_cards.image)+">";
         }
        
         for(player_initial; player_initial<2; player_initial++) {
@@ -68,7 +71,7 @@ request_data.onreadystatechange = function() {
             allCards.splice(initial_cards,1);
             playerSum+=initial_cards.value;
             player.push(initial_cards);
-            document.getElementById("player").innerHTML+= "<img src="+(initial_cards.image)+">" ;
+            document.getElementById("player-card-id").innerHTML+= "<img src="+(initial_cards.image)+">" ;
         }
 
     }
@@ -124,13 +127,14 @@ function Dealerhit() {
 
 function hit() {
 
-    random_card = allCards[Math.floor(Math.random()*allCards.length)];
-    index_of_random = allCards.indexOf(random_card);
-    allCards.splice(index_of_random,1);
-    player.push(random_card);
+    random_card_selection = allCards[Math.floor(Math.random()*allCards.length)];
+    index_of_random_selection = allCards.indexOf(random_card_selection);
+    allCards.splice(index_of_random_selection,1);
+    player.push(random_card_selection);
+
     document.getElementById("player").innerHTML+= "<img src="+(random_card.image)+">";
 
-    playerSum += random_card.value;
+    playerSum += random_card_selection.value;
 
     if(playerSum > 21) {
 
