@@ -13,8 +13,7 @@ var random_card_selection;
 var index_of_random_selection;
 var bid_money = 0;
 var min_principle_amount; 
-var principle_amount;
-var confirmation_more_play;
+var principle_amount = localStorage.getItem("Principle Amount of User");
 
 
 request_data.open("GET", "https://deckofcardsapi.com/api/deck/new/draw/?count=52", true);
@@ -76,12 +75,6 @@ request_data.onreadystatechange = function() {
     
 };
 
-document.getElementById("btn-disable-1").disabled = true;
-document.getElementById("btn-disable-2").disabled = true;
-document.getElementById("btn-disable-3").disabled = true;
-document.getElementById("btn-disable-4").disabled = true;
-document.getElementById("btn-disable-5").disabled = true;
-
 function add_amount() {
 
     let entered_principle_amount = document.getElementById("input-principle-amount").value;
@@ -103,27 +96,25 @@ function add_amount() {
         let display_principle_button_value = document.createTextNode(`${principle_amount}`);
         document.getElementById("principle-sum-button-id").innerHTML = parseInt(principle_amount);
     }
-
-    document.getElementById("principle-amount-submit-btn").disabled = true;
 }
 
 function Dealerhit() {
 
-	random_card_selection = allCards[Math.floor(Math.random()*allCards.length)];
-	index_of_random_selection = allCards.indexOf(random_card_selection);
-	allCards.splice(index_of_random_selection,1);
-	dealer.push(random_card_selection);
-	dealerSum+=random_card_selection.value;
+    random_card_selection = allCards[Math.floor(Math.random()*allCards.length)];
+    index_of_random_selection = allCards.indexOf(random_card_selection);
+    allCards.splice(index_of_random_selection,1);
+    dealer.push(random_card_selection);
+    dealerSum+=random_card_selection.value;
 
-	if(dealerSum > 21) {
+    if(dealerSum > 21) {
 
-		if(dealer['ACE'] == true) {
+        if(dealer['ACE'] == true) {
 
-			dealerSum -= 10;
-		}
-	}
+            dealerSum -= 10;
+        }
+    }
 
-	document.getElementById("dealer-card-id").innerHTML+= "<img src="+(random_card_selection.image) + ">";
+    document.getElementById("dealer-card-id").innerHTML+= "<img src="+(random_card_selection.image) + ">";
 
               // document.getElementById("pl").innerHTML += "<img src=$(str)>";
 }
@@ -150,9 +141,9 @@ function hit() {
 
         else {
 
-        	stand(); 
-    	}
-    }			
+            stand(); 
+        }
+    }           
     // document.getElementById("player").innerHTML = "<img src='$(str)'>";
 }
 
@@ -165,7 +156,7 @@ function addbid() {
 
 function stand() {
 
-	if(playerSum>21) {
+    if(playerSum>21) {
 
         alert("dealear_won");
 
@@ -175,12 +166,12 @@ function stand() {
         
     else {
 
-    	while(dealerSum<17) {
+        while(dealerSum<17) {
 
-    		Dealerhit();
-    	}
+            Dealerhit();
+        }
 
-    	setTimeout(function() {
+        setTimeout(function() {
 
             if(dealerSum>21) {
 
@@ -261,16 +252,5 @@ function stand() {
     }
 }
 
-function enable_buttons() {
-
-    document.getElementById("add-amount-btn").disabled = true;
-    document.getElementById("btn-disable-1").disabled = false;
-    document.getElementById("btn-disable-2").disabled = false;
-    document.getElementById("btn-disable-3").disabled = false;
-    document.getElementById("btn-disable-4").disabled = false;
-    document.getElementById("btn-disable-5").disabled = false;
-    
-
-}
 
 request_data.send();

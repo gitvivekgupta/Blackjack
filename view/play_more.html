@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -24,59 +24,47 @@
       <div id="dealer-card-id"></div><br>=
       <div id="player-card-id"></div><br><br>
   
-      <button id="add-amount-btn" type="button" class="set-table-play" data-toggle="modal" data-target="#myModal">ADD AMOUNT</button>
+      <button type="button" class="set-table-play" data-toggle="modal" data-target="#myModal">ADD AMOUNT</button>
 
       <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
         
           <!-- Modal content-->
           <div class="modal-content"> 
-
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"">&times;</button>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Select Number of Players</h4>
-            </div> 
-
+            </div>  
             <div class="modal-body">
               <p> 
                  Add Principle Amount: <input type="number" id="input-principle-amount" min="1000">
-
-                 <button id="principle-amount-submit-btn" value="Submit" onclick="add_amount()">Deposit</button>
+                 <input type="button" value="Submit" onclick="add_amount()"><br><br>
 
                  <p id="show-error">
                    
                  </p>
 
               </p>
-            </div> 
-             
+            </div>  
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" onclick="enable_buttons()">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
-
           </div>
           
         </div>
       </div>
-
-      <button id="btn-disable-1" class="table-btn" onclick="quit()">QUIT</button>
-      <button id="btn-disable-2" class="table-btn" onclick="addbid()">Bid: 500</button>
-      <button id="btn-disable-3" class="table-btn" onclick="hit()">HIT</button>
-      <button id="btn-disable-4" class="table-btn" onclick="stand()">STAND</button>
-      <button id="btn-disable-5" class="table-btn" onclick="new_game()">NEW GAME</button>
-
-<!--       <a class="table-btn" onclick="quit()">QUIT</a>
+      <a class="table-btn" onclick="quit()">QUIT</a>
       <a class="table-btn" onclick="addbid()">Bid: 500</a>
       <a class="table-btn" onclick="hit()">HIT</a>
       <a class="table-btn" onclick="stand()">STAND</a>
-      <a class="table-btn" onclick="new_game()">NEW GAME</a> -->
+      <a class="table-btn" onclick="new_game()">NEW GAME</a>
     
     </div>
 
 
- <script src="../scripts/player_detail.js"></script> 
- <script src="../scripts/jack_table.js"></script> 
- <!-- <script src="../scripts/play_more.js"></script>  -->
+ <!-- <script src="../scripts/player_detail.js"></script> --> 
+ <!-- <script src="../scripts/jack_table.js"></script>  -->
+ <script src="../scripts/play_more.js"></script> 
 
 </body>
 
